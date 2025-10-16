@@ -1,0 +1,110 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(#ffe6f0, #fff0f5);
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+  margin: 0;
+}
+
+.card {
+  width: 90%;
+  max-width: 400px;
+  height: 550px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  background: #ffccff;
+  color: #333;
+  font-size: 1.1em;
+  backface-visibility: hidden;
+  transform: rotateY(0deg);
+  transition: transform 0.8s, opacity 0.8s;
+  opacity: 0;
+}
+
+.page.active {
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
+/* Front page styling */
+.page1 {
+  background: #ff99cc;
+  color: white;
+  font-size: 2em;
+  padding: 40px 20px;
+}
+
+/* Decorative flowers */
+.decor .flower {
+  width: 25px;
+  height: 25px;
+  background: pink;
+  border-radius: 50%;
+  position: absolute;
+  animation: floatFlower 4s ease-in-out infinite;
+}
+
+.flower1 { top: 10%; left: 10%; }
+.flower2 { top: 20%; right: 15%; }
+.flower3 { bottom: 15%; left: 30%; }
+
+@keyframes floatFlower {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-15px) scale(1.1); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* Hearts animation */
+.hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: red;
+  transform: rotate(-45deg);
+  animation: float 3s linear infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heart::before { top: -9px; left: 0; }
+.heart::after { left: 9px; top: 0; }
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+  100% { transform: translateY(-500px) rotate(-45deg); opacity: 0; }
+}
