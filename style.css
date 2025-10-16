@@ -1,4 +1,6 @@
 body {
+  margin:0;
+  padding:0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +8,20 @@ body {
   background: linear-gradient(#ffe6f0, #fff0f5);
   font-family: 'Arial', sans-serif;
   overflow: hidden;
-  margin: 0;
+  position: relative;
+}
+
+#muteBtn {
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  background: rgba(255,255,255,0.6);
+  border: none;
+  font-size: 1.5em;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 100;
 }
 
 .card {
@@ -32,7 +47,7 @@ body {
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   background: #ffccff;
   color: #333;
-  font-size: 1.1em;
+  font-size: 1.2em;
   backface-visibility: hidden;
   transform: rotateY(0deg);
   transition: transform 0.8s, opacity 0.8s;
@@ -44,12 +59,19 @@ body {
   transform: rotateY(0deg);
 }
 
-/* Front page styling */
-.page1 {
-  background: #ff99cc;
-  color: white;
+/* Shimmer effect */
+.shimmer {
   font-size: 2em;
-  padding: 40px 20px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 5px #ff6ec7, 0 0 10px #ff6ec7, 0 0 20px #ff6ec7, 0 0 40px #ff6ec7;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { text-shadow: 0 0 5px #ff6ec7, 0 0 10px #ff6ec7, 0 0 20px #ff6ec7, 0 0 40px #ff6ec7; }
+  50% { text-shadow: 0 0 10px #ffb6c1, 0 0 20px #ffb6c1, 0 0 30px #ffb6c1, 0 0 50px #ffb6c1; }
+  100% { text-shadow: 0 0 5px #ff6ec7, 0 0 10px #ff6ec7, 0 0 20px #ff6ec7, 0 0 40px #ff6ec7; }
 }
 
 /* Decorative flowers */
@@ -107,4 +129,14 @@ body {
 @keyframes float {
   0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
   100% { transform: translateY(-500px) rotate(-45deg); opacity: 0; }
+}
+
+/* Line animation for poems */
+.line {
+  opacity: 0;
+  margin: 10px 0;
+}
+.line.show {
+  opacity: 1;
+  transition: opacity 1s;
 }
